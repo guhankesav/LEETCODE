@@ -1,4 +1,5 @@
 #https://leetcode.com/problems/shuffle-string/submissions/
+
 class Solution:
     def restoreString(self, s: str, indices: List[int]) -> str:
         l = list(s)
