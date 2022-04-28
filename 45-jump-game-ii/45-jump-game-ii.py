@@ -1,17 +1,26 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        _len = len(nums)
-        if _len <= 1: return 0
-        stop_pos = 0
-        max_des = 0
-        jumps = 0
-        for idx in range(_len-1):
-            max_des = max(max_des, idx+nums[idx])
-            if stop_pos == idx:
-                stop_pos = max_des
-                jumps += 1
-                if max_des >= _len-1:
-                    return jumps
-            if max_des >= _len-1:
-                return jumps+1
+        pos = 0
+        moves = 0
         
+        while pos < len(nums) - 1:
+            k = pos + nums[pos]     #position's max_reach, and range for sub-testings (for loop)
+            
+            if k >= len(nums) - 1:  #one more move can go to the end, just return moves + 1
+                return moves + 1
+            
+            max_reach = 0   
+            max_reach_pos = 0
+            
+            for j in range(pos+1, k + 1):
+                if j < len(nums):           #prevent out of index
+                    temp = j + nums[j]      #max_reach subtesting
+                    if temp > max_reach:    # >= works the same, but will increase Runtime
+                        max_reach = temp
+                        max_reach_pos = j
+            #found the single move that will bring the maximum reach
+            
+            pos = max_reach_pos             #push the position forward
+            moves += 1
+        
+        return moves
