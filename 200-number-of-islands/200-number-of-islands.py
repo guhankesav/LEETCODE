@@ -11,7 +11,7 @@ class Solution:
             queue.append((r,c))
             
             while queue:
-                row, col = queue.pop()
+                row, col = queue.pop() # if popleft used it is a bfs / if pop is usewd it is dfs coz of queue and stack operatins
                 directions = [[0,1],[0,-1],[1,0],[-1,0]]
                 
                 for i,j in directions:
