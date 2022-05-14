@@ -12,10 +12,8 @@ class Solution:
             else:
                 stack.append([char,1])
         out = ""
-        for i in range(len(stack)):
-                for j in range(stack[i][1]):
-                    print(str(stack[i][0]))
-                    out = out  + str(stack[i][0])
+        for c , n in stack:
+            out += (c * n)
         print(out)
         return out
                 
